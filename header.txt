@@ -1,0 +1,5 @@
+/*****************
+Competative programming code written by Nir Shalmon
+IMPORTANT NOTE: This code was written during a time limited competition or for use in competition. 
+THIS CODE IS NOT AN INDICATION OF MY  USUAL CODE QUALITY!!
+******************/
