@@ -1,0 +1,866 @@
+/*****************
+Competative programming code written by Nir Shalmon
+IMPORTANT NOTE: This code was written during a time limited competition or for use in competition. 
+THIS CODE IS NOT AN INDICATION OF MY  USUAL CODE QUALITY!!
+******************/
+[SUBTASK 1]
+right
+right #now facing down
+firstCopy:
+pebble firstcopydown
+move
+move #at (2,0), copying to (0,0)
+right
+right #facing up
+firstFix:
+pebble fixFirst
+move
+move
+
+right 
+move
+right #(0,1) facing down
+secondCopy:
+pebble secondcopydown
+move
+move
+right 
+right #at (2,1) facing up
+secondFix:
+pebble fixSecond
+move
+left
+move
+right
+right #at (1,0) facing right
+onLeft: #looking right
+pebble moveRight
+left
+move
+halt
+onRight: #looking left
+pebble moveLeft
+right
+move
+halt
+
+moveRight:
+get
+move
+right
+right
+jump onRight
+
+moveLeft:
+get
+move
+right
+right
+jump onLeft
+
+firstcopydown:
+get
+move
+put
+move
+put
+right
+right
+move
+move
+right 
+right
+jump firstCopy
+
+fixFirst:
+get
+move
+move
+put
+right
+right
+move
+move
+right 
+right
+jump firstFix
+
+secondcopydown:
+get
+move
+put
+move
+put
+right
+right
+move
+move
+right 
+right
+jump secondCopy
+
+fixSecond:
+get
+move
+move
+put
+right
+right
+move
+move
+right 
+right
+jump secondFix
+
+[SUBTASK 2]
+right
+right #now facing down
+firstCopy:
+pebble firstcopydown
+move
+move #at (2,0), copying to (0,0)
+right
+right #facing up
+firstFix:
+pebble fixFirst
+move
+move
+
+right 
+move
+right #(0,1) facing down
+secondCopy:
+pebble secondcopydown
+move
+move
+right 
+right #at (2,1) facing up
+secondFix:
+pebble fixSecond
+move
+left
+move
+right
+right #at (1,0) facing right
+onLeft: #looking right
+pebble moveRight
+left
+move
+halt
+onRight: #looking left
+pebble moveLeft
+right
+move
+halt
+
+moveRight:
+get
+move
+right
+right
+jump onRight
+
+moveLeft:
+get
+move
+right
+right
+jump onLeft
+
+firstcopydown:
+get
+move
+put
+move
+put
+right
+right
+move
+move
+right 
+right
+jump firstCopy
+
+fixFirst:
+get
+move
+move
+put
+right
+right
+move
+move
+right 
+right
+jump firstFix
+
+secondcopydown:
+get
+move
+put
+move
+put
+right
+right
+move
+move
+right 
+right
+jump secondCopy
+
+fixSecond:
+get
+move
+move
+put
+right
+right
+move
+move
+right 
+right
+jump secondFix
+
+[SUBTASK 3]
+#search for first pebble:
+right
+searchingLeft:
+pebble onLeft
+move
+jump searchingLeft
+
+onLeft:
+get
+move
+put
+move
+jump searchRight
+
+searchRight:
+pebble onRight
+move
+jump searchRight
+onRight:
+right
+right
+get
+move
+pebble done
+put
+move
+jump secondSearchLeft
+
+secondSearchLeft:
+right
+right
+pebble onLeft
+right
+right
+move
+jump secondSearchLeft
+
+done:
+halt
+
+[SUBTASK 4]
+right
+pickupRocks: # up dow routine. lokking right
+right
+goDown:
+border startGoUp
+move
+jump goDown
+
+startGoUp:
+right
+right
+goUp:
+pebble copyUp
+move
+border next
+jump goUp
+
+copyUp:
+get
+move
+put
+right
+right
+move
+right
+right
+jump goUp
+
+
+next:
+right
+border return
+move
+jump pickupRocks
+
+
+return:
+right
+right
+goLeft:
+pebble copyLeft
+move
+border exit
+jump goLeft
+
+copyLeft:
+get
+move
+put
+right
+right
+move
+right
+right
+jump goLeft 
+
+exit:
+halt
+
+
+[SUBTASK 5]
+nextRow_0:
+right
+border startScan_1
+move
+right
+leftGoing_0:
+border prepareNext_0
+move
+jump leftGoing_0
+prepareNext_0:
+right
+startScan_0:
+right
+scanCell_0:
+pebble notEnd_0
+jump end_0
+notEnd_0:
+border nextRow_0
+move
+jump scanCell_0
+nextRow_1:
+right
+border startScan_2
+move
+right
+leftGoing_1:
+border prepareNext_1
+move
+jump leftGoing_1
+prepareNext_1:
+right
+startScan_1:
+right
+scanCell_1:
+get
+pebble notEnd_1
+jump end_1
+notEnd_1:
+put
+border nextRow_1
+move
+jump scanCell_1
+nextRow_2:
+right
+border startScan_3
+move
+right
+leftGoing_2:
+border prepareNext_2
+move
+jump leftGoing_2
+prepareNext_2:
+right
+startScan_2:
+right
+scanCell_2:
+get
+get
+pebble notEnd_2
+jump end_2
+notEnd_2:
+put
+put
+border nextRow_2
+move
+jump scanCell_2
+nextRow_3:
+right
+border startScan_4
+move
+right
+leftGoing_3:
+border prepareNext_3
+move
+jump leftGoing_3
+prepareNext_3:
+right
+startScan_3:
+right
+scanCell_3:
+get
+get
+get
+pebble notEnd_3
+jump end_3
+notEnd_3:
+put
+put
+put
+border nextRow_3
+move
+jump scanCell_3
+nextRow_4:
+right
+border startScan_5
+move
+right
+leftGoing_4:
+border prepareNext_4
+move
+jump leftGoing_4
+prepareNext_4:
+right
+startScan_4:
+right
+scanCell_4:
+get
+get
+get
+get
+pebble notEnd_4
+jump end_4
+notEnd_4:
+put
+put
+put
+put
+border nextRow_4
+move
+jump scanCell_4
+nextRow_5:
+right
+border startScan_6
+move
+right
+leftGoing_5:
+border prepareNext_5
+move
+jump leftGoing_5
+prepareNext_5:
+right
+startScan_5:
+right
+scanCell_5:
+get
+get
+get
+get
+get
+pebble notEnd_5
+jump end_5
+notEnd_5:
+put
+put
+put
+put
+put
+border nextRow_5
+move
+jump scanCell_5
+nextRow_6:
+right
+border startScan_7
+move
+right
+leftGoing_6:
+border prepareNext_6
+move
+jump leftGoing_6
+prepareNext_6:
+right
+startScan_6:
+right
+scanCell_6:
+get
+get
+get
+get
+get
+get
+pebble notEnd_6
+jump end_6
+notEnd_6:
+put
+put
+put
+put
+put
+put
+border nextRow_6
+move
+jump scanCell_6
+nextRow_7:
+right
+border startScan_8
+move
+right
+leftGoing_7:
+border prepareNext_7
+move
+jump leftGoing_7
+prepareNext_7:
+right
+startScan_7:
+right
+scanCell_7:
+get
+get
+get
+get
+get
+get
+get
+pebble notEnd_7
+jump end_7
+notEnd_7:
+put
+put
+put
+put
+put
+put
+put
+border nextRow_7
+move
+jump scanCell_7
+nextRow_8:
+right
+border startScan_9
+move
+right
+leftGoing_8:
+border prepareNext_8
+move
+jump leftGoing_8
+prepareNext_8:
+right
+startScan_8:
+right
+scanCell_8:
+get
+get
+get
+get
+get
+get
+get
+get
+pebble notEnd_8
+jump end_8
+notEnd_8:
+put
+put
+put
+put
+put
+put
+put
+put
+border nextRow_8
+move
+jump scanCell_8
+nextRow_9:
+right
+border startScan_10
+move
+right
+leftGoing_9:
+border prepareNext_9
+move
+jump leftGoing_9
+prepareNext_9:
+right
+startScan_9:
+right
+scanCell_9:
+get
+get
+get
+get
+get
+get
+get
+get
+get
+pebble notEnd_9
+jump end_9
+notEnd_9:
+put
+put
+put
+put
+put
+put
+put
+put
+put
+border nextRow_9
+move
+jump scanCell_9
+nextRow_10:
+right
+border startScan_11
+move
+right
+leftGoing_10:
+border prepareNext_10
+move
+jump leftGoing_10
+prepareNext_10:
+right
+startScan_10:
+right
+scanCell_10:
+get
+get
+get
+get
+get
+get
+get
+get
+get
+get
+pebble notEnd_10
+jump end_10
+notEnd_10:
+put
+put
+put
+put
+put
+put
+put
+put
+put
+put
+border nextRow_10
+move
+jump scanCell_10
+nextRow_11:
+right
+border startScan_12
+move
+right
+leftGoing_11:
+border prepareNext_11
+move
+jump leftGoing_11
+prepareNext_11:
+right
+startScan_11:
+right
+scanCell_11:
+get
+get
+get
+get
+get
+get
+get
+get
+get
+get
+get
+pebble notEnd_11
+jump end_11
+notEnd_11:
+put
+put
+put
+put
+put
+put
+put
+put
+put
+put
+put
+border nextRow_11
+move
+jump scanCell_11
+nextRow_12:
+right
+border startScan_13
+move
+right
+leftGoing_12:
+border prepareNext_12
+move
+jump leftGoing_12
+prepareNext_12:
+right
+startScan_12:
+right
+scanCell_12:
+get
+get
+get
+get
+get
+get
+get
+get
+get
+get
+get
+get
+pebble notEnd_12
+jump end_12
+notEnd_12:
+put
+put
+put
+put
+put
+put
+put
+put
+put
+put
+put
+put
+border nextRow_12
+move
+jump scanCell_12
+nextRow_13:
+right
+border startScan_14
+move
+right
+leftGoing_13:
+border prepareNext_13
+move
+jump leftGoing_13
+prepareNext_13:
+right
+startScan_13:
+right
+scanCell_13:
+get
+get
+get
+get
+get
+get
+get
+get
+get
+get
+get
+get
+get
+pebble notEnd_13
+jump end_13
+notEnd_13:
+put
+put
+put
+put
+put
+put
+put
+put
+put
+put
+put
+put
+put
+border nextRow_13
+move
+jump scanCell_13
+nextRow_14:
+right
+border startScan_15
+move
+right
+leftGoing_14:
+border prepareNext_14
+move
+jump leftGoing_14
+prepareNext_14:
+right
+startScan_14:
+right
+scanCell_14:
+get
+get
+get
+get
+get
+get
+get
+get
+get
+get
+get
+get
+get
+get
+pebble notEnd_14
+jump end_14
+notEnd_14:
+put
+put
+put
+put
+put
+put
+put
+put
+put
+put
+put
+put
+put
+put
+border nextRow_14
+move
+jump scanCell_14
+end_14:
+put
+end_13:
+put
+end_12:
+put
+end_11:
+put
+end_10:
+put
+end_9:
+put
+end_8:
+put
+end_7:
+put
+end_6:
+put
+end_5:
+put
+end_4:
+put
+end_3:
+put
+end_2:
+put
+end_1:
+put
+end_0:
+startScan_15:
